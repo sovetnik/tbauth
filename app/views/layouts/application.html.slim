@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title TBauth
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+    = action_cable_meta_tag
+    = favicon_link_tag "apple-touch-icon.png",
+                         rel: "apple-touch-icon",
+                         sizes: "100x100",
+                         type: "image/png"
+  body
+    nav.navbar.navbar-default role="navigation"
+      .row
+        .col-md-8.col-md-offset-2
+          /! Brand and toggle get grouped for better mobile display
+          .navbar-header
+            = link_to 'TB auth', root_path, class: 'navbar-brand'
+          ul.nav.navbar-nav.navbar-right
+            - if current_user
+              li
+                = link_to 'Logout', logout_path, method: :post
+            -else
+              li
+                = link_to 'Sign up now', new_user_path 
+              li
+                = link_to 'log in', login_path 
+               
+    .row
+      .col-md-7.col-md-offset-2
+        - if flash.keys.any?
+          - unless alert.nil?
+            .alert.alert-warning role="alert"
+              = alert
+          - unless notice.nil?
+            .alert.alert-success role="alert"
+              = notice
+
+        = yield
