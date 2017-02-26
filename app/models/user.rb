@@ -11,4 +11,17 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true
+
+  def get_token
+    token || set_token!
+  end
+
+  def set_token!
+    update(token: SecureRandom.hex)
+    token
+  end
+
+  def forget_token!
+    update(token: nil)
+  end
 end

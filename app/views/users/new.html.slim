@@ -1,7 +1,7 @@
 h1 New user Registration
 
 = render 'form'
-
-= link_to 'Back', users_path
 br
-= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
+= link_to 'Back', users_path, class: 'btn btn-default'
+'
+= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook), class: 'btn btn-default'

@@ -22,6 +22,8 @@ html
           ul.nav.navbar-nav.navbar-right
             - if current_user
               li
+                = link_to 'profile', profile_path
+              li
                 = link_to 'Logout', logout_path, method: :post
             -else
               li

@@ -2,4 +2,6 @@ h1 Login
 
 = render 'form'
 
-= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
+= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook), class: 'btn btn-default'
+b or
+= link_to 'Sign up now', new_user_path, class: 'btn btn-success'

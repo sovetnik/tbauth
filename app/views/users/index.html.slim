@@ -1,27 +1,18 @@
 h1 Listing users
 
-table
+table class="table table-hover"
+
   thead
     tr
-      th Email
-      th Name
-      th Crypted password
-      th Salt
-      th
-      th
-      th
+      th ID
+      th Name or Email
 
   tbody
     - @users.each do |user|
       tr
-        td = user.email
-        td = user.name
-        td = user.crypted_password
-        td = user.salt
-        td = link_to 'Show', user
-        td = link_to 'Edit', edit_user_path(user)
-        td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
+        td = user.id
+        td = user.name || user.email
 
 br
 
-= link_to 'New User', new_user_path
+= link_to 'Registration', new_user_path, class: 'btn btn-default'
