@@ -19,9 +19,6 @@ RUN bundle install --binstubs
 
 COPY . .
 
-VOLUME ["$INSTALL_PATH/public"]
-# In production you will very likely reverse proxy Rails with nginx.
-# This sets up a volume so that nginx can read in the assets from
-# the Rails Docker image without having to copy them to the Docker host.
+RUN rails assets:precompile
 
 CMD puma -C config/puma.rb
